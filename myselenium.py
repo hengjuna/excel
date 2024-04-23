@@ -9,19 +9,24 @@ from selenium.webdriver.support.wait import WebDriverWait
 from country_code import get_country_name
 
 
-def get_country(driver,code):
+def get_country(driver,code,ws,row_num):
     global dest
+
     try:
 
-        driver.get("https://www.shipxy.com/")
         time.sleep(1)
 
         search_box = driver.find_element(By.ID, "txtKey")
+        search_box.clear()
+        time.sleep(0.5)
         search_box.send_keys(code)
-        time.sleep(1)
-        search_box.send_keys(Keys.RETURN)
 
-        time.sleep(2)
+
+        time.sleep(0.5)
+        search_box.send_keys(Keys.RETURN)
+        search_box.send_keys(Keys.RETURN)
+        time.sleep(0.5)
+
         dest = driver.find_element(By.ID, "si_dest").text
         if '>' in dest:
             countryCode = dest.split('>')[1].strip()
@@ -34,6 +39,7 @@ def get_country(driver,code):
         countryName = get_country_name(countryCode)
 
         return countryName
-    except Exception:
+    except Exception as e:
         print("异常 " + str(code) + ' ' + dest)
+        ws.cell(row=row_num, column=23).value = dest
         return "异常"

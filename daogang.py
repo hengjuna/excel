@@ -12,7 +12,7 @@ def daogang(path):
         p_value = ws.cell(row=row_num, column=13).value
 
         # Check if values are the same
-        if i_value == p_value:
+        if i_value == p_value or i_value == "中国":
             # Delete the row
             ws.delete_rows(row_num, 1)
 
