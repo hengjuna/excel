@@ -12,4 +12,11 @@ def get_country_name(code):
         name = feature['properties']['name']
         country_dict[iso_a2] = name
 
-    return country_dict.get(code, "Unknown")
+    if country_dict.__contains__(code):
+        result = country_dict.get(code)
+        if len(result) > 4:
+            raise Exception("more than 4")
+        return country_dict.get(code)
+
+
+    raise Exception("no name error")

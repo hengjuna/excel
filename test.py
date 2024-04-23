@@ -12,14 +12,15 @@ import myselenium
 # Load the Excel file
 
 
-file_path = '/Users/minggong/PycharmProjects/pythonProject/铁矿_海漂_分品种_20240415(1).xlsx'
+file_path = '/Users/minggong/PycharmProjects/pythonProject/铁矿_全球海漂_分品种_20240422.xlsx'
 
 if "到港" in os.path.basename(file_path):
     daogang.daogang(file_path)
 if "海漂" in os.path.basename(file_path):
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     driver = webdriver.Chrome(options=chrome_options)
+    driver.get("https://www.shipxy.com/")
 
     wb = openpyxl.load_workbook(file_path)
     ws = wb.active
@@ -48,11 +49,12 @@ if "海漂" in os.path.basename(file_path):
                 # Get the A column value
                 a_value = ws.cell(row=row_num, column=1).value
 
-                country = myselenium.get_country(driver,a_value);
-                print(country)
+                country = myselenium.get_country(driver,a_value,ws,row_num);
+                print(country),
                 # Get the ship information fromship_info = response.json()
 
                 # Update the I and M columns with the ship information
+
                 ws.cell(row=row_num, column=9).value = country
                 # 将整行数据追加到新工作表中
                 new_row_values = [cell.value for cell in ws[row_num]]
