@@ -9,7 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from country_code import get_country_name
 
 
-def get_country(driver,code,ws,row_num):
+def get_country(driver: object, code: object, ws: object, row_num: object) -> object:
     global dest
 
     try:
