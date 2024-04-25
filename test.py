@@ -16,7 +16,9 @@ file_path = '/Users/minggong/PycharmProjects/pythonProject/铁矿_全球海漂_�
 
 if "到港" in os.path.basename(file_path):
     daogang.daogang(file_path)
-if "海漂" in os.path.basename(file_path):
+if "海漂" not in os.path.basename(file_path):
+    pass
+else:
     chrome_options = webdriver.ChromeOptions()
     # chrome_options.add_argument('--headless')
     driver = webdriver.Chrome(options=chrome_options)
