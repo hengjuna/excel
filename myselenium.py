@@ -14,7 +14,7 @@ def get_country(driver, code,i_value, ws, row_num):
 
     try:
 
-        time.sleep(1)
+        time.sleep(0.2)
 
         search_box = driver.find_element(By.ID, "txtKey")
         search_box.clear()
@@ -22,8 +22,9 @@ def get_country(driver, code,i_value, ws, row_num):
         search_box.send_keys(code)
 
 
-        time.sleep(0.5)
+
         search_box.send_keys(Keys.RETURN)
+        time.sleep(0.5)
         search_box.send_keys(Keys.RETURN)
         time.sleep(1)
 
@@ -42,8 +43,12 @@ def get_country(driver, code,i_value, ws, row_num):
                 countryCode = dest.split(" ")[1]
             countryName = get_country_name(countryCode)
             ws.cell(row=row_num, column=9).value = countryName
+            search_box.clear()
+
     except Exception as e:
 
-        print("异常 " + str(code) + ' ' + dest + ' 行' + str(row_num))
+        print("异常 " + str(code) + ' ' + dest + ' 行   ' + str(row_num))
         ws.cell(row=row_num, column=23).value = dest
+        search_box.clear()
+
         return "异常"
