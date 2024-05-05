@@ -52,8 +52,11 @@ if "海漂" in os.path.basename(file_path):
             ws.delete_rows(row_num, 1)
 
         else:
-            a_value = ws.cell(row=row_num, column=1).value
-            myselenium.get_country(driver, a_value,i_value, ws, row_num)
+            try:
+                a_value = ws.cell(row=row_num, column=1).value
+                myselenium.get_country(driver, a_value, i_value, ws, row_num)
+            except Exception as e:
+                print('错误 行 ： ' + str(row_num))
 
     wb.save(file_path + "_update.xlsx")
     new_wb.save(file_path + "_modified.xlsx")
