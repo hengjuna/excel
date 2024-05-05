@@ -44,6 +44,6 @@ def get_country(driver, code,i_value, ws, row_num):
             ws.cell(row=row_num, column=9).value = countryName
     except Exception as e:
 
-        print("异常 " + str(code) + ' ' + dest)
+        print("异常 " + str(code) + ' ' + dest + ' 行' + str(row_num))
         ws.cell(row=row_num, column=23).value = dest
         return "异常"
