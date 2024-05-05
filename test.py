@@ -28,7 +28,7 @@ if "海漂" in os.path.basename(file_path):
     new_ws = new_wb.active
 
     delete_wb = openpyxl.Workbook()
-    delete_ws = new_wb.active
+    delete_ws = delete_wb.active
 
     # Iterate over rows
     for row_num in range(2, ws.max_row + 1):
@@ -56,6 +56,8 @@ if "海漂" in os.path.basename(file_path):
                 a_value = ws.cell(row=row_num, column=1).value
                 myselenium.get_country(driver, a_value, i_value, ws, row_num)
             except Exception as e:
+                driver.get("https://www.shipxy.com/")
+
                 print('错误 行 ： ' + str(row_num))
 
     wb.save(file_path + "_update.xlsx")

@@ -46,6 +46,7 @@ def get_country(driver, code,i_value, ws, row_num):
             search_box.clear()
 
     except Exception as e:
+        driver.get("https://www.shipxy.com/")
 
         print("异常 " + str(code) + ' ' + dest + ' 行   ' + str(row_num))
         ws.cell(row=row_num, column=23).value = dest
