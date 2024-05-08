@@ -7,6 +7,7 @@ df = pd.read_excel(input_file)
 # 首先根据国家和到货国不相等的条件过滤数据
 df_filtered = df[df['国家'] != df['到货国']]
 
+
 # 增加一个条件，装货国不是中国的行保留
 df_filtered = df_filtered[df_filtered['到货国'] != '中国']
 
