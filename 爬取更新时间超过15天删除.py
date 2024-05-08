@@ -68,7 +68,12 @@ current_time = datetime.now()
 days_threshold = 15
 df['更新时间'] = pd.to_datetime(df['更新时间'], errors='coerce')  # 将更新时间列转换为日期时间对象
 df = df.dropna(subset=['更新时间'])  # 删除无效日期时间行
+
 df = df[(current_time - df['更新时间']) <= timedelta(days=days_threshold)]
+df_exceed_threshold = df[(current_time - df['更新时间']) > timedelta(days=days_threshold)]
+
+output_delete_file = input_file + '_超过15被删除.xlsx'
+df_exceed_threshold.to_excel(output_delete_file, index=False)
 
 # 另存为新文件，避免修改原文件
 output_file = input_file + '_获取更新时间超过15删除后.xlsx'

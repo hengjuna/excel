@@ -54,10 +54,10 @@ def get_real_country(mmsi_value, mydriver):
     except TimeoutException:
         print(f"页面加载超时：MMSI = {mmsi_value}")
     except Exception as e:
-        print(f"发生异常：MMSI = {mmsi_value}, 错误国家code：{str(dest)}")
+        print(f"发生异常：MMSI = {mmsi_value}, 错误国家 code：{str(dest)}")
 
     # 出现异常时返回默认值
-    return "异常"
+    return dest
 
 # 读取 Excel 文件
 input_file = '铁矿_全球到港_分品种_20240506.xlsx'
