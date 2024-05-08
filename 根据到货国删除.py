@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 读取 Excel 文件
-input_file = '/Users/minggong/PycharmProjects/pythonProject/铁矿_全球到港_分品种_20240506.xlsx'
+input_file = '铁矿_全球到港_分品种_20240506.xlsx'
 df = pd.read_excel(input_file)
 
 # 首先根据国家和到货国不相等的条件过滤数据

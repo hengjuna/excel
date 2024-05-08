@@ -86,3 +86,4 @@ for index, row in unknown_rows.iterrows():
 # 另存为新文件，避免修改原文件
 output_file = input_file + '_爬取未知到货国.xlsx'
 df.to_excel(output_file, index=False)
+mydriver.quit()
